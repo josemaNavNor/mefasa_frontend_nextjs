@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader,CardTitle } from "@/components/ui/card"
-import SignUpForm from "./sign_up_form"
+import SignUpForm from "./layout_form"
 import LogoMefasa from "@/components/ui/img"
 
 export default function SignIn() {
