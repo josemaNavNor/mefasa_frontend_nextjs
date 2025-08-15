@@ -81,7 +81,7 @@ export default function SignUpForm() {
         {error && <div className="text-red-500 text-sm">{error}</div>}
         {success && <div className="text-green-500 text-sm">{typeof success === "string" ? success : success.message}</div>}
 
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded" disabled={loading}>
+        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:opacity-50 hover:bg-blue-700 transition-colors" disabled={loading}>
           {loading ? "Registrando..." : "Registrarse"}
         </button>
 

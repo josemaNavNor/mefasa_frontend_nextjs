@@ -102,7 +102,7 @@ export default function QR2FA() {
         <CardContent>
           <div className="flex flex-col gap-4">
             <Label>Presiona para generar tu código QR:</Label>
-            <button onClick={handleGenerateQR} disabled={loading || !userId} className="bg-blue-600 text-white px-4 py-2 rounded">
+            <button onClick={handleGenerateQR} disabled={loading || !userId} className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:opacity-50 hover:bg-blue-700 transition-colors">
               {loading ? "Generando..." : "Generar QR"}
             </button>
             {error && <div className="text-red-500 text-sm">{error}</div>}
@@ -127,7 +127,7 @@ export default function QR2FA() {
                   <button
                     onClick={handleVerifyOTP}
                     disabled={verifying || otp.length !== 6}
-                    className="w-full bg-green-600 text-white py-2 rounded mt-2 disabled:opacity-50"
+                    className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:opacity-50 hover:bg-blue-700 transition-colors"
                   >
                     {verifying ? "Verificando..." : "Verificar código"}
                   </button>

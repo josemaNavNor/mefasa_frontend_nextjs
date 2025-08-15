@@ -11,6 +11,7 @@ import { login2FA } from "../../services/api/login2FA";
 import { getProfile } from "../../services/api/getProfile";
 import Cookies from "js-cookie";
 
+
 export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -81,6 +82,7 @@ export default function SignIn() {
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+
             <Card className="w-full max-w-sm">
                 <LayoutHeader />
                 <CardContent>
@@ -135,7 +137,7 @@ export default function SignIn() {
                             {message && <div className="text-green-600 text-sm">{message}</div>}
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:opacity-50"
+                                className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:opacity-50 hover:bg-blue-700 transition-colors"
                                 disabled={loading}
                             >
                                 {loading ? "Ingresando..." : "Iniciar sesión"}
