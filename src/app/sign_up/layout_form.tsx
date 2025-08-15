@@ -86,7 +86,7 @@ export default function SignUpForm() {
         </button>
 
         <CardFooter className="flex-col gap-2">
-          <Link href="/components/sign_in" className="w-full">
+          <Link href="/sign_in" className="w-full">
             <Button variant="link" className="w-full" asChild>
               <span>¿Ya tienes una cuenta? Iniciar sesión</span>
             </Button>
