@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SignUpFormState } from "../services/api/signUp";
+import { SignUpFormState } from "@/@types/users/usersType";
 
 export default function useSignUpForm() {
   // Estado del formulario
