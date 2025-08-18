@@ -15,13 +15,13 @@ export const useRegister = () => {
                     autoClose: 2000,
                 });
 
-                router.push("/login");
+                router.push("/sign_in");
             }
         } catch (error: unknown) {
             let message = "Ocurrió un error inesperado.";
 
             if (error instanceof Error) {
-                message = (error as any)?.response?.data?.message?.[0] || message;
+                message = (error as any)?.response?.data?.message || message;
             }
 
             toast.error(message, {
