@@ -6,8 +6,8 @@ export interface Ticket {
   ticket_number: string;
   floor_id: number;
   area_id: number;
-  end_user_id: number;
-  technician_id: number;
+  end_user_id: string;
+  technician_id: string;
   type_id: number;
   summary: string;
   description: string;
@@ -41,8 +41,8 @@ export default function useTicketsPage() {
           ticket_number: 'TCK-001',
           floor_id: 2,
           area_id: 3,
-          end_user_id: 5,
-          technician_id: 7,
+          end_user_id: 'lolita@mefasa.org',
+          technician_id: 'j.navarro@mefasa.org',
           type_id: 1,
           summary: 'Problema de conexión de red',
           description: 'Los equipos del área de ventas no tienen conexión a internet desde esta mañana.',
@@ -58,8 +58,8 @@ export default function useTicketsPage() {
           ticket_number: 'TCK-002',
           floor_id: 1,
           area_id: 2,
-          end_user_id: 3,
-          technician_id: 4,
+          end_user_id: 'rogelio@mefasa.org',
+          technician_id: 'd.abril@mefasa.org',
           type_id: 2,
           summary: 'Impresora no funciona',
           description: 'La impresora del área administrativa no responde y muestra error de papel atascado.',
@@ -75,8 +75,8 @@ export default function useTicketsPage() {
           ticket_number: 'TCK-003',
           floor_id: 3,
           area_id: 1,
-          end_user_id: 8,
-          technician_id: 2,
+          end_user_id: 'raul@mefasa.org',
+          technician_id: 'kenia@mefasa.org',
           type_id: 3,
           summary: 'Solicitud de nuevo software',
           description: 'Necesito instalar Adobe Creative Suite para el proyecto de marketing digital.',
