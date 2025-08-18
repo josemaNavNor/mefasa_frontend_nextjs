@@ -3,7 +3,7 @@
 import { CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useSignUpForm } from "../../services/api/signUp";
+import useSignUpForm from "../../hooks/useSignUpForm";
 import { SelectRoles } from "../role/select_rol";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -23,8 +23,29 @@ export default function SignUpForm() {
     error,
     success,
     handleChange,
-    handleSubmit
+    setLoading,
+    setError,
+    setSuccess
   } = useSignUpForm();
+
+  // Importa la función de API
+  const { signUpApi } = require("../../services/api/signUp");
+
+  // Maneja el submit del formulario
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+    try {
+      const data = await signUpApi(form);
+      setSuccess(data);
+    } catch (err: any) {
+      setError(err.message || "Error al registrar");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
