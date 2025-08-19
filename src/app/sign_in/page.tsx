@@ -29,9 +29,11 @@ export default function SignIn() {
             if (requires2FA) {
                 // Login con 2FA
                 await signIn({ email, password, token: token2FA });
+                setMessage("Inicio de sesión exitoso!");
             } else {
                 // Login normal
                 await login({ email, password });
+                setMessage("Inicio de sesión exitoso! Redirigiendo...");
             }
         } catch (err: any) {
             setError('Error al iniciar sesión');
