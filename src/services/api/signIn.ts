@@ -10,7 +10,7 @@ export interface SignInResponse {
 	requiresTwoFactor?: boolean;
 	message?: string;
 }
-//cddq eiez bjgx ogdp
+
 export async function signIn(payload: SignInPayload): Promise<SignInResponse> {
 	try {
 		const response = await axios.post(

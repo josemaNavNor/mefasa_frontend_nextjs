@@ -61,14 +61,6 @@ export default function TicketsPage() {
                 </div>
               </div>
               <div className="flex gap-2">
-                <button
-                  onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-                  className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-3 rounded-xl font-medium flex items-center gap-2 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  title={sidebarCollapsed ? "Mostrar sidebar" : "Ocultar sidebar"}
-                >
-                  <Menu className="w-5 h-5" />
-                  {sidebarCollapsed ? "Mostrar" : "Ocultar"}
-                </button>
                 <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
                   <Download className="w-5 h-5" />
                   Exportar
