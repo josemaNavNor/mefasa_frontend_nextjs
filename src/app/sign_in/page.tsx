@@ -4,24 +4,41 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import LayoutHeader, { LayoutFooter } from "./layout_header_footer";
-import UseSignIn from "../../hooks/useSignIn";
+import { useState } from "react";
+import { useLogin } from "@/hooks/useSignIn";
+import {useSignInWith2FA} from "@/hooks/useSignInWith2fa";
 
 
 export default function SignIn() {
-    
-    const {
-        email,
-        setEmail,
-        password,
-        setPassword,
-        setToken2FA,
-        handleSubmit,
-        loading,
-        requires2FA,
-        token2FA,
-        error,
-        message
-    } = UseSignIn()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [token2FA, setToken2FA] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [requires2FA, setRequires2FA] = useState(false);
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+    const { login } = useLogin();
+    const { signIn } = useSignInWith2FA();
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setLoading(true);
+    try {
+        if (requires2FA) {
+            // Login con 2FA
+            await signIn({ email, password, token: token2FA });
+        } else {
+            // Login normal
+            await login({ email, password });
+        }
+    } catch (err: any) {
+        setError('Error al iniciar sesión');
+    } finally {
+        setLoading(false);
+    }
+};
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">

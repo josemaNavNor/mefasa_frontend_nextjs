@@ -1,19 +1,19 @@
-import { SignInFormState } from "@/@types/users/usersType";
+import { SignInWith2FAFormState } from "@/@types/users/usersType";
 import { API } from "@/services/api/API";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify'
 
-export const useLogin = () => {
+export const useSignInWith2FA = () => {
     const router = useRouter();
 
-    const login = async (data: SignInFormState) => {
+    const signIn = async (data: SignInWith2FAFormState) => {
         try {
-            const response = await API.users.signInApi(data);
-            toast.success(response.message === "¡Inicio de sesión exitoso! Redirigiendo...", {
+            const response = await API.users.signInApiWithToken(data);
+            toast.success(response.message === "Inicio de sesion exitoso!", {
                 position: "top-right",
                 autoClose: 2000,
             });
-            router.push('/qr');
+            router.push('/tickets');
             return response;
         } catch (error: unknown) {
             let message = "Ocurrio un error inesperado.";
@@ -24,10 +24,10 @@ export const useLogin = () => {
 
             toast.error('Ocurrió un error al iniciar sesión', {
                 position: "top-right",
-                autoClose: 2000,
+                autoClose: 3000,
             });
             throw error;
         }
     };
-    return { login };
+    return { signIn };
 }
