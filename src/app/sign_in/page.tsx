@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import LayoutHeader, { LayoutFooter } from "./layout_header_footer";
 import { useState } from "react";
 import { useLogin } from "@/hooks/useSignIn";
-import {useSignInWith2FA} from "@/hooks/useSignInWith2fa";
+import { useSignInWith2FA } from "@/hooks/useSignInWith2fa";
 
 
 export default function SignIn() {
@@ -20,25 +20,25 @@ export default function SignIn() {
     const { login } = useLogin();
     const { signIn } = useSignInWith2FA();
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError('');
-    setMessage('');
-    setLoading(true);
-    try {
-        if (requires2FA) {
-            // Login con 2FA
-            await signIn({ email, password, token: token2FA });
-        } else {
-            // Login normal
-            await login({ email, password });
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setError('');
+        setMessage('');
+        setLoading(true);
+        try {
+            if (requires2FA) {
+                // Login con 2FA
+                await signIn({ email, password, token: token2FA });
+            } else {
+                // Login normal
+                await login({ email, password });
+            }
+        } catch (err: any) {
+            setError('Error al iniciar sesión');
+        } finally {
+            setLoading(false);
         }
-    } catch (err: any) {
-        setError('Error al iniciar sesión');
-    } finally {
-        setLoading(false);
-    }
-};
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
@@ -92,8 +92,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                                     />
                                 </div>
                             )}
-                            {error && <div className="text-red-500 text-sm">{error}</div>}
-                            {message && <div className="text-green-600 text-sm">{message}</div>}
+                            {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+                            {message && <div className="text-green-600 text-sm text-center">{message}</div>}
                             <button
                                 type="submit"
                                 className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:opacity-50 hover:bg-blue-700 transition-colors"

@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Label } from "@radix-ui/react-label";
 import { Input } from "@/components/ui/input";
 import LogoMefasa from "@/components/ui/img";
+// import { setTimeout } from "timers/promises";
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -39,6 +40,15 @@ export default function Register() {
     };
 
     await register(data);
+
+    // Borrar el formulario
+    setTimeout(() => {
+        setName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+    }, 3000);
   };
 
   return (

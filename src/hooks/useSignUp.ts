@@ -1,21 +1,20 @@
 import { SignUpFormState } from "@/@types/users/usersType";
 import { API } from "@/services/api/API";
-import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 
 export const useRegister = () => {
-    const router = useRouter();
-
     const register = async (data: SignUpFormState) => {
         try {
             const response = await API.users.signUpApi(data);
             if (response.message === "Se ha enviado un correo de verificación. Por favor, revise su bandeja de entrada.") {
                 toast.success("¡Registro exitoso! Redirigiendo...", {
                     position: "top-right",
-                    autoClose: 2000,
+                    autoClose: 3000,
                 });
-
-                router.push("/sign_in");
+                toast.success("Se ha enviado un correo de verificación. Por favor, revise su bandeja de entrada.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
             }
         } catch (error: unknown) {
             let message = "Ocurrió un error inesperado.";

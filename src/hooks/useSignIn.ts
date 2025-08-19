@@ -11,10 +11,12 @@ export const useLogin = () => {
             const response = await API.users.signInApi(data);
             toast.success(response.message === "¡Inicio de sesión exitoso! Redirigiendo...", {
                 position: "top-right",
-                autoClose: 2000,
+                autoClose: 3000,
             });
-            router.push('/qr');
-            return response;
+            setTimeout(() => {
+                router.push('/qr');
+            }, 3000);
+
         } catch (error: unknown) {
             let message = "Ocurrio un error inesperado.";
 
@@ -24,7 +26,7 @@ export const useLogin = () => {
 
             toast.error('Ocurrió un error al iniciar sesión', {
                 position: "top-right",
-                autoClose: 2000,
+                autoClose: 3000,
             });
             throw error;
         }

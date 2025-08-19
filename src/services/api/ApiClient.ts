@@ -30,7 +30,7 @@ export class ApiClient {
         const res = await this.axiosInstance.post<T>(url, data, config);
         return res.data;
     }
-
+ 
     public async patch<T>(url: string, data: object, config?: AxiosRequestConfig): Promise<T> {
         const res = await this.axiosInstance.patch<T>(url, data, config);
         return res.data;

@@ -11,10 +11,12 @@ export const useSignInWith2FA = () => {
             const response = await API.users.signInApiWithToken(data);
             toast.success(response.message === "Inicio de sesion exitoso!", {
                 position: "top-right",
-                autoClose: 2000,
+                autoClose: 3000,
             });
-            router.push('/tickets');
-            return response;
+            setTimeout(() => {
+                router.push("/tickets");
+            }, 3000);
+            
         } catch (error: unknown) {
             let message = "Ocurrio un error inesperado.";
 
